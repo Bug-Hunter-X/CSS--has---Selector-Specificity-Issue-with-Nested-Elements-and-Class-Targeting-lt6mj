@@ -1,0 +1,22 @@
+The solution involves increasing the specificity of the `:has(.target)` selector to ensure that it overrides other conflicting styles.  This can be achieved in several ways:
+
+**Method 1:  Adding a more specific parent selector**
+```css
+.wrapper div:has(.target) {
+  background-color: lightgreen; /*This will now override the lightgray background */
+}
+```
+
+**Method 2: Using an ID selector for more specificity**
+This adds a unique ID to the container to increase specificity. 
+```css
+<div id="myWrapper" class="wrapper">
+    <div><p class="target">...</p></div>
+    <div><p>...</p></div>
+</div>
+#myWrapper div:has(.target) {
+    background-color: lightgreen;
+}
+```
+
+By utilizing either of these methods, you can ensure that the `:has()` selector correctly targets the intended elements and applies the desired styles, resolving the specificity conflict.
