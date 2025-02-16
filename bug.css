@@ -1,0 +1,27 @@
+The following CSS code snippet demonstrates an uncommon error related to the usage of the `:has()` pseudo-class, specifically when targeting elements based on a class name within a nested structure.  The expectation is that only the parent `<div>` element with a child element having the class `target` will be styled, but due to the specificity and order of CSS selectors, it might not behave as intended. 
+```css
+div:has(.target) {
+  background-color: yellow;
+}
+
+.target {
+  color: blue;
+}
+
+.wrapper div {
+  background-color: lightgray;
+}
+
+.wrapper div:has(.target) {
+ background-color: lightgreen;
+}
+
+<div class="wrapper">
+  <div>
+    <p class="target">This paragraph is targeted.</p>
+  </div>
+  <div>
+    <p>This is not targeted.</p>
+  </div>
+</div>
+```
